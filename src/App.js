@@ -13,10 +13,6 @@ function App() {
     const [note, setNote] = useState(null);
     const [savedNotes, setSavedNotes] = useState([]);
 
-    useEffect(() => {
-        handleListen();
-    }, [isListening, handleListen]);
-
     const handleListen = () => {
         if (isListening) {
             mic.start();
@@ -51,6 +47,10 @@ function App() {
         setSavedNotes([...savedNotes, note]);
         setNote('');
     };
+
+    useEffect(() => {
+        handleListen();
+    }, [isListening, handleListen]);
 
     return (
         <>
